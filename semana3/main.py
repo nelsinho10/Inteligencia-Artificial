@@ -5,11 +5,8 @@
 
 # Variable de tipo diccionario que almacena notas
 puntos = {'A':10,'B':8.0,'C':5.0}
-# Variable de tipo entero
-numeroCursos = 0
-# Variable de tipo puntos
-totalPuntos = 0
-# Variable de tipo boolean
+numero_cursos = 0
+total_puntos = 0
 fin = False
 
 # Mientras no sea Verdadero
@@ -24,22 +21,8 @@ while not fin:
         print('Nota desconocida')
 
     else:
-        numeroCursos += 1
-        totalPuntos += puntos[nota]
+        numero_cursos += 1
+        total_puntos += puntos[nota]
 
-if numeroCursos > 0:
-    print('Su promedio es: %s' %(totalPuntos/numeroCursos))        
-
-
-"""
-    ! NOTAS
-    ? Alias: Es la forma de asignar varios identificadores a un mismo objeto 
-    * Cuando se asigna otro valor al objeto se rompe el alias
-
-    ? Clases Predefinidas
-    * Son clases que no necesitan la importacion de modulos externos para funcionar
-
-    ? Clases Mutables e Inmutables
-    * Mutables: Una vez creada la clase puede cambiar de valor 
-    * Inmutables Una vez creada la clase no puede cambiar su valor
-"""
+if numero_cursos > 0:
+    print('Su promedio es: {0}'.format(total_puntos/numero_cursos))        
