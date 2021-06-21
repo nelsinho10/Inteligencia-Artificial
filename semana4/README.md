@@ -96,7 +96,7 @@ Semana 4
 - Si una excepcion no es capturada, entonces esta causara que el interprete termine la ejecucion del programa.
 
 **Ejemplos de excepciones:**
-![exepciones](/assets/excepciones.PNG)
+![exepciones](./assets/excepciones.PNG)
 
 - Las excepciones se lanzan con `raise nombreExcepcion('Mensaje')`
 
