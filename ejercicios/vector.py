@@ -12,13 +12,19 @@
 # PD: El texto después del caracter '#' en Python es un comentario.
 # La palabra 'pass' puede borrarla cuando haya puesto código al método.
 
+from typing import Iterable
+
 class Vector:
 
   def __init__(self, elementos):
     """Inicializa el vector con el iterable elementos.
     Lanza una excepción en caso de que elementos no sea iterable."""
-    pass
-  
+
+    if not isinstance(elementos, Iterable):
+      raise TypeError('el elemento no es un iterable')
+
+    self.elementos = elementos
+
   def sumar(self, vector):
     """Retorna la suma del vector actual con el parámetro <vector>
     Lanza una excepción de tipo TypeError en caso de que <vector> no sea de 
@@ -26,7 +32,16 @@ class Vector:
     Lanza una excepción de tipo ValueError en caso de que <vector> no tenga
     las mismas dimensiones del vector actual.
     """
-    pass
+    if not isinstance(vector, Vector):
+      raise TypeError('<vector> no es de tipo Vector')
+
+    if len(vector.elementos) != self.size():
+      raise ValueError('dimensiones de los vectores son distintas')
+
+    for i in range(self.size()):
+      self.elementos[i] = self.elementos[i] + vector.elementos[i]
+
+    return self
 
   def prod_punto(self, vector):
     """Retorna el producto punto del vector actual con el parámetro <vector>
@@ -35,11 +50,22 @@ class Vector:
     Lanza una excepción de tipo ValueError en caso de que <vector> no tenga
     las mismas dimensiones del vector actual.
     """
-    pass
+    if not isinstance(vector, Vector):
+      raise TypeError('<vector> no es de tipo Vector')
+    
+    if len(vector.elementos) != self.size():
+      raise ValueError('dimensiones de los vectores son distintas')
+
+    produto_punto = 0
+    
+    for i in range(self.size()):
+      produto_punto += self.elementos[i] * vector.elementos[i]
+    return produto_punto
+
 
   def size(self):
     """Retorna el número de elementos en el vector"""
-    pass
+    return len(self.elementos)
 
 
 ## Ejemplo de uso ##
