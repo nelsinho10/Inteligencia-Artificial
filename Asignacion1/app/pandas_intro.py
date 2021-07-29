@@ -64,9 +64,14 @@ def fill_numeric_nulls(dataframe):
   df = dataframe.fillna(dataframe.mean())
   return df
 
-# def get_most_correlated_cols(dataframe, umbral): 
-#   """Retorna un conjunto de frozensets con los pares de columnas cuyas correlaciones positivas o negativas 
-#   sean mayores o iguales a <umbral>."""
+def get_most_correlated_cols(dataframe, umbral): 
+  """Retorna un conjunto de frozensets con los pares de columnas cuyas correlaciones positivas o negativas 
+  sean mayores o iguales a <umbral>."""
+  df = dataframe.corr()[dataframe.corr() != 1][dataframe.corr() >= umbral].unstack().dropna().index
+  temp = dict()
 
-#   fz = {}
-#   return fz
+  for i in range(len(df)):
+    temp = {df[i][0]:df[i][1]}
+  
+  conjunto = set(temp)
+  return conjunto 
